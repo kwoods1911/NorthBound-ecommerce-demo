@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CheckoutController;
@@ -40,3 +41,9 @@ Route::post('/chat', [ChatController::class, 'store'])
     ->name('chat.store');
 
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
+
+Route::get('/account', [AccountController::class, 'show'])
+    ->middleware('auth')
+    ->name('account');
+
+require __DIR__.'/auth.php';

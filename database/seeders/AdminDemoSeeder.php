@@ -29,7 +29,13 @@ class AdminDemoSeeder extends Seeder
             'is_admin' => true,
         ]);
 
-        $customers = User::factory(12)->create();
+        $knownCustomer = User::factory()->create([
+            'name' => 'Casey Rivera',
+            'email' => 'customer@travelgear.test',
+            'password' => 'password',
+        ]);
+
+        $customers = User::factory(11)->create()->push($knownCustomer);
 
         $categories = collect([
             ['name' => 'Suitcases', 'slug' => 'suitcases'],
@@ -63,6 +69,11 @@ class AdminDemoSeeder extends Seeder
         // ~50 orders spread across the last 30 days.
         foreach (range(1, 50) as $i) {
             $this->makeOrder($products, $customers, Carbon::today()->subDays(fake()->numberBetween(0, 29)));
+        }
+
+        // Guarantee the demo login has order history to show on /account.
+        foreach ([2, 9, 21] as $daysAgo) {
+            $this->makeOrder($products, collect([$knownCustomer]), Carbon::today()->subDays($daysAgo));
         }
     }
 

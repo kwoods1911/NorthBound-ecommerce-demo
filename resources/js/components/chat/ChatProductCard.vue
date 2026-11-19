@@ -12,10 +12,10 @@ const { close } = useChat();
 <template>
     <Link
         :href="product.url"
-        class="flex gap-3 rounded-lg border border-gray-200 bg-white p-2 transition-colors hover:border-gray-300"
+        class="flex gap-3 rounded-lg border border-stone bg-white p-2 transition-colors hover:border-compass"
         @click="close"
     >
-        <div class="h-14 w-14 shrink-0 overflow-hidden rounded bg-gray-100">
+        <div class="h-14 w-14 shrink-0 overflow-hidden rounded bg-stone/20">
             <img
                 v-if="product.image"
                 :src="product.image"
@@ -26,16 +26,16 @@ const { close } = useChat();
         </div>
 
         <div class="min-w-0 flex-1">
-            <p class="truncate text-sm font-medium text-gray-900">{{ product.name }}</p>
+            <p class="truncate text-sm font-medium text-ink">{{ product.name }}</p>
             <p class="mt-0.5 text-sm">
-                <span :class="product.compareAtPrice ? 'text-red-600' : 'text-gray-900'">
+                <span :class="product.compareAtPrice ? 'text-compass' : 'text-ink'">
                     {{ product.price.formatted }}
                 </span>
-                <span v-if="product.compareAtPrice" class="ml-1.5 text-gray-400 line-through">
+                <span v-if="product.compareAtPrice" class="ml-1.5 text-ink/50 line-through">
                     {{ product.compareAtPrice.formatted }}
                 </span>
             </p>
-            <p v-if="product.badges?.length" class="mt-0.5 text-xs text-gray-500">
+            <p v-if="product.badges?.length" class="mt-0.5 text-xs text-ink/50">
                 {{ product.badges[0] }}
             </p>
         </div>

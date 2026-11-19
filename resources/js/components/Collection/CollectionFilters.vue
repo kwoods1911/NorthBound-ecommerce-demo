@@ -15,10 +15,10 @@ function isColorActive(color) {
 <template>
     <div class="space-y-8" :class="{ 'pointer-events-none opacity-50': disabled }">
         <div class="flex items-center justify-between">
-            <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500">Filter</h2>
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-ink/50">Filter</h2>
             <button
                 type="button"
-                class="text-xs text-gray-500 underline hover:text-gray-900"
+                class="text-xs text-ink/50 underline hover:text-ink"
                 @click="emit('clear')"
             >
                 Clear all
@@ -26,8 +26,8 @@ function isColorActive(color) {
         </div>
 
         <fieldset v-if="options.categories" class="space-y-2">
-            <legend class="mb-2 text-sm font-medium text-gray-900">Category</legend>
-            <label class="flex items-center gap-2 text-sm text-gray-600">
+            <legend class="mb-2 text-sm font-medium text-ink">Category</legend>
+            <label class="flex items-center gap-2 text-sm text-ink/70">
                 <input
                     type="radio"
                     name="category"
@@ -39,7 +39,7 @@ function isColorActive(color) {
             <label
                 v-for="category in options.categories"
                 :key="category.slug"
-                class="flex items-center gap-2 text-sm text-gray-600"
+                class="flex items-center gap-2 text-sm text-ink/70"
             >
                 <input
                     type="radio"
@@ -52,11 +52,11 @@ function isColorActive(color) {
         </fieldset>
 
         <fieldset v-if="options.colors?.length" class="space-y-2">
-            <legend class="mb-2 text-sm font-medium text-gray-900">Colour</legend>
+            <legend class="mb-2 text-sm font-medium text-ink">Colour</legend>
             <label
                 v-for="color in options.colors"
                 :key="color"
-                class="flex items-center gap-2 text-sm text-gray-600"
+                class="flex items-center gap-2 text-sm text-ink/70"
             >
                 <input
                     type="checkbox"
@@ -68,8 +68,8 @@ function isColorActive(color) {
         </fieldset>
 
         <fieldset class="space-y-2">
-            <legend class="mb-2 text-sm font-medium text-gray-900">Price</legend>
-            <label class="flex items-center gap-2 text-sm text-gray-600">
+            <legend class="mb-2 text-sm font-medium text-ink">Price</legend>
+            <label class="flex items-center gap-2 text-sm text-ink/70">
                 <input
                     type="radio"
                     name="price"
@@ -81,7 +81,7 @@ function isColorActive(color) {
             <label
                 v-for="bucket in options.priceBuckets"
                 :key="bucket.key"
-                class="flex items-center gap-2 text-sm text-gray-600"
+                class="flex items-center gap-2 text-sm text-ink/70"
             >
                 <input
                     type="radio"
@@ -95,7 +95,7 @@ function isColorActive(color) {
 
         <label
             v-if="options.showOnSaleFilter"
-            class="flex items-center gap-2 text-sm text-gray-600"
+            class="flex items-center gap-2 text-sm text-ink/70"
         >
             <input
                 type="checkbox"

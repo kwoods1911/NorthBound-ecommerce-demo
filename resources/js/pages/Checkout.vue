@@ -66,7 +66,7 @@ async function pay() {
     <Head title="Checkout" />
 
     <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-semibold tracking-tight">Checkout</h1>
+        <h1 class="font-serif text-3xl font-semibold tracking-tight">Checkout</h1>
 
         <p v-if="summary.issues.length" class="mt-4 rounded-md bg-amber-50 p-3 text-sm text-amber-800">
             <span v-for="issue in summary.issues" :key="issue" class="block">{{ issue }}</span>
@@ -78,7 +78,7 @@ async function pay() {
                 <ShippingForm v-model="form" :errors="errors" />
 
                 <div>
-                    <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500">Payment</h2>
+                    <h2 class="text-sm font-semibold uppercase tracking-wide text-ink/50">Payment</h2>
                     <div class="mt-4">
                         <StripePaymentElement
                             ref="paymentEl"
@@ -92,8 +92,8 @@ async function pay() {
             </div>
 
             <aside class="mt-10 lg:mt-0">
-                <div class="rounded-lg bg-gray-50 p-6">
-                    <ul class="mb-4 space-y-2 text-sm text-gray-600">
+                <div class="rounded-lg bg-stone/20 p-6">
+                    <ul class="mb-4 space-y-2 text-sm text-ink/70">
                         <li v-for="line in summary.lines" :key="line.id" class="flex justify-between">
                             <span>{{ line.name }} &times; {{ line.quantity }}</span>
                             <span>{{ line.lineTotal.formatted }}</span>
@@ -107,12 +107,12 @@ async function pay() {
                     />
                     <button
                         type="submit"
-                        class="mt-6 w-full rounded-md bg-gray-900 py-3 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-40"
+                        class="mt-6 w-full rounded-md bg-compass py-3 text-sm font-medium text-white hover:bg-compass/90 disabled:opacity-40"
                         :disabled="processing || summary.issues.length > 0"
                     >
                         {{ processing ? 'Processing…' : `Pay ${summary.total.formatted}` }}
                     </button>
-                    <p class="mt-3 text-center text-xs text-gray-400">
+                    <p class="mt-3 text-center text-xs text-ink/50">
                         Test mode — use card 4242 4242 4242 4242
                     </p>
                 </div>

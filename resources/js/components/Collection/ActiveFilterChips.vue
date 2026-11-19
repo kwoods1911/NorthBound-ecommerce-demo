@@ -55,7 +55,7 @@ function remove(chip) {
             v-for="chip in chips"
             :key="chip.key"
             type="button"
-            class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700 hover:bg-gray-200"
+            class="inline-flex items-center gap-1.5 rounded-full bg-stone/20 px-3 py-1 text-xs text-ink/70 hover:bg-stone/40"
             @click="remove(chip)"
         >
             {{ chip.label }}

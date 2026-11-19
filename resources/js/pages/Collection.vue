@@ -39,28 +39,28 @@ function onSetFilters(patch) {
 
     <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <header class="max-w-2xl">
-            <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h1 class="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
                 {{ collection.title }}
             </h1>
-            <p class="mt-3 text-gray-600">{{ collection.description }}</p>
+            <p class="mt-3 text-ink/70">{{ collection.description }}</p>
         </header>
 
-        <div class="mt-8 flex items-center justify-between gap-4 border-b border-gray-100 pb-4">
-            <p class="text-sm text-gray-500">{{ total }} {{ total === 1 ? 'product' : 'products' }}</p>
+        <div class="mt-8 flex items-center justify-between gap-4 border-b border-stone pb-4">
+            <p class="text-sm text-ink/50">{{ total }} {{ total === 1 ? 'product' : 'products' }}</p>
 
             <div class="flex items-center gap-3">
                 <button
                     type="button"
-                    class="text-sm text-gray-600 underline lg:hidden"
+                    class="text-sm text-ink/70 underline lg:hidden"
                     @click="drawerOpen = true"
                 >
                     Filters
                 </button>
 
-                <label class="flex items-center gap-2 text-sm text-gray-600">
+                <label class="flex items-center gap-2 text-sm text-ink/70">
                     <span class="hidden sm:inline">Sort</span>
                     <select
-                        class="rounded-md border-gray-300 py-1.5 pl-2 pr-8 text-sm"
+                        class="rounded-md border-stone py-1.5 pl-2 pr-8 text-sm"
                         :value="sortValue"
                         :disabled="processing"
                         @change="setFilters({ sort: $event.target.value })"
@@ -111,7 +111,7 @@ function onSetFilters(patch) {
             <div class="absolute inset-y-0 right-0 w-80 max-w-[85vw] overflow-y-auto bg-white p-6 shadow-xl">
                 <div class="mb-6 flex items-center justify-between">
                     <span class="text-sm font-semibold">Filters</span>
-                    <button type="button" class="text-gray-500" @click="drawerOpen = false">
+                    <button type="button" class="text-ink/50" @click="drawerOpen = false">
                         Close
                     </button>
                 </div>

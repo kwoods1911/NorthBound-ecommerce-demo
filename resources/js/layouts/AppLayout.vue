@@ -22,10 +22,10 @@ const collections = [
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col bg-white text-gray-900">
-        <header class="border-b border-gray-100">
+    <div class="min-h-screen flex flex-col bg-fog text-ink">
+        <header class="border-b border-stone">
             <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-                <Link href="/" class="text-lg font-semibold tracking-tight">
+                <Link href="/" class="font-serif text-lg font-semibold tracking-tight">
                     Travel&nbsp;Gear&nbsp;Co
                 </Link>
 
@@ -35,7 +35,7 @@ const collections = [
                         :key="item.href"
                         :href="item.href"
                         prefetch
-                        class="text-sm text-gray-600 transition-colors hover:text-gray-900"
+                        class="text-sm text-ink/70 transition-colors hover:text-ink"
                     >
                         {{ item.label }}
                     </Link>
@@ -43,35 +43,35 @@ const collections = [
 
                 <div class="flex items-center gap-5">
                     <template v-if="user">
-                        <Link href="/account" class="text-sm text-gray-600 hover:text-gray-900">
+                        <Link href="/account" class="text-sm text-ink/70 hover:text-ink">
                             Account
                         </Link>
                         <button
                             type="button"
-                            class="text-sm text-gray-600 hover:text-gray-900"
+                            class="text-sm text-ink/70 hover:text-ink"
                             @click="logout"
                         >
                             Log out
                         </button>
                     </template>
                     <template v-else>
-                        <Link href="/login" class="text-sm text-gray-600 hover:text-gray-900">
+                        <Link href="/login" class="text-sm text-ink/70 hover:text-ink">
                             Log in
                         </Link>
-                        <Link href="/register" class="hidden text-sm text-gray-600 hover:text-gray-900 sm:inline">
+                        <Link href="/register" class="hidden text-sm text-ink/70 hover:text-ink sm:inline">
                             Sign up
                         </Link>
                     </template>
 
                     <Link
                         href="/cart"
-                        class="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900"
+                        class="inline-flex items-center gap-1.5 text-sm text-ink/70 hover:text-ink"
                         aria-label="Cart"
                     >
                         Cart
                         <span
                             v-if="cartCount > 0"
-                            class="rounded-full bg-gray-900 px-1.5 text-xs font-medium text-white"
+                            class="rounded-full bg-compass px-1.5 text-xs font-medium text-white"
                         >
                             {{ cartCount }}
                         </span>
@@ -79,20 +79,20 @@ const collections = [
                 </div>
             </div>
 
-            <nav class="flex gap-4 overflow-x-auto border-t border-gray-100 px-4 py-2 md:hidden">
+            <nav class="flex gap-4 overflow-x-auto border-t border-stone px-4 py-2 md:hidden">
                 <Link
                     v-for="item in collections"
                     :key="item.href"
                     :href="item.href"
                     prefetch
-                    class="whitespace-nowrap text-sm text-gray-600"
+                    class="whitespace-nowrap text-sm text-ink/70"
                 >
                     {{ item.label }}
                 </Link>
-                <Link v-if="user" href="/account" class="whitespace-nowrap text-sm text-gray-600">
+                <Link v-if="user" href="/account" class="whitespace-nowrap text-sm text-ink/70">
                     Account
                 </Link>
-                <Link v-else href="/login" class="whitespace-nowrap text-sm text-gray-600">
+                <Link v-else href="/login" class="whitespace-nowrap text-sm text-ink/70">
                     Log in
                 </Link>
             </nav>
@@ -102,8 +102,8 @@ const collections = [
             <slot />
         </main>
 
-        <footer class="border-t border-gray-100 py-8">
-            <div class="mx-auto max-w-7xl px-4 text-sm text-gray-400 sm:px-6 lg:px-8">
+        <footer class="border-t border-stone py-8">
+            <div class="mx-auto max-w-7xl px-4 text-sm text-ink/50 sm:px-6 lg:px-8">
                 Demo store — travel gear &amp; luggage.
             </div>
         </footer>

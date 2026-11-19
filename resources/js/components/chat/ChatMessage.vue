@@ -10,8 +10,8 @@ defineProps({
     <div :class="message.role === 'user' ? 'items-end' : 'items-start'" class="flex flex-col gap-2">
         <div
             :class="message.role === 'user'
-                ? 'bg-gray-900 text-white'
-                : 'bg-gray-100 text-gray-900'"
+                ? 'bg-compass text-white'
+                : 'bg-stone/20 text-ink'"
             class="max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed"
         >
             {{ message.content }}

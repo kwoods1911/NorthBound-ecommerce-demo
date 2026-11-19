@@ -24,7 +24,7 @@ function pageFromUrl(url) {
             :disabled="!link.url || link.active"
             class="min-w-9 rounded-md px-3 py-2 text-sm transition-colors"
             :class="[
-                link.active ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-100',
+                link.active ? 'bg-compass text-white' : 'text-ink/70 hover:bg-stone/30',
                 !link.url ? 'cursor-not-allowed opacity-40' : '',
             ]"
             @click="link.url && emit('navigate', pageFromUrl(link.url))"

@@ -23,16 +23,16 @@ defineProps({
 
         <div
             v-else
-            class="rounded-lg border border-dashed border-gray-200 py-20 text-center"
+            class="rounded-lg border border-dashed border-stone py-20 text-center"
         >
-            <p class="text-sm text-gray-500">No products match these filters.</p>
+            <p class="text-sm text-ink/50">No products match these filters.</p>
         </div>
 
         <div
             v-if="processing"
             class="pointer-events-none absolute inset-0 flex items-start justify-center pt-20"
         >
-            <span class="h-6 w-6 animate-spin rounded-full border-2 border-gray-300 border-t-gray-900" />
+            <span class="h-6 w-6 animate-spin rounded-full border-2 border-stone border-t-ink" />
         </div>
     </div>
 </template>

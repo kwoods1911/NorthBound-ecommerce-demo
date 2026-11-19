@@ -15,10 +15,10 @@ function step(delta) {
 </script>
 
 <template>
-    <div class="inline-flex items-center rounded-md border border-gray-300">
+    <div class="inline-flex items-center rounded-md border border-stone">
         <button
             type="button"
-            class="px-3 py-1 text-gray-600 disabled:opacity-40"
+            class="px-3 py-1 text-ink/70 disabled:opacity-40"
             :disabled="disabled || modelValue <= min"
             aria-label="Decrease quantity"
             @click="step(-1)"
@@ -28,7 +28,7 @@ function step(delta) {
         <span class="min-w-8 text-center text-sm tabular-nums">{{ modelValue }}</span>
         <button
             type="button"
-            class="px-3 py-1 text-gray-600 disabled:opacity-40"
+            class="px-3 py-1 text-ink/70 disabled:opacity-40"
             :disabled="disabled || modelValue >= max"
             aria-label="Increase quantity"
             @click="step(1)"

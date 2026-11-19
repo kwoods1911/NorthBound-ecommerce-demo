@@ -5,18 +5,13 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeWebhookController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
+Route::inertia('/about', 'About')->name('about');
 
 Route::get('/new-arrivals', [CollectionController::class, 'newArrivals'])->name('collections.new-arrivals');
 Route::get('/best-sellers', [CollectionController::class, 'bestSellers'])->name('collections.best-sellers');

@@ -19,7 +19,7 @@ onMounted(async () => {
         mode: 'payment',
         amount: props.amountCents,
         currency: props.currency,
-        appearance: { theme: 'stripe', variables: { colorPrimary: '#111827' } },
+        appearance: { theme: 'stripe', variables: { colorPrimary: '#A6743D' } },
     });
     elements.create('payment').mount(mountEl.value);
     ready.value = true;
@@ -46,7 +46,7 @@ defineExpose({ validate, confirm, ready });
 
 <template>
     <div>
-        <div v-if="!ready" class="text-sm text-gray-500">Loading payment form…</div>
+        <div v-if="!ready" class="text-sm text-ink/50">Loading payment form…</div>
         <div ref="mountEl" />
     </div>
 </template>

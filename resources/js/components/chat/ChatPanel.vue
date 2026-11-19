@@ -41,7 +41,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown));
         <!-- Launcher -->
         <button
             type="button"
-            class="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gray-900 text-white shadow-lg transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+            class="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-compass text-white shadow-lg transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-compass focus-visible:ring-offset-2"
             :aria-expanded="open"
             aria-label="Open the shopping assistant"
             @click="toggle"
@@ -57,18 +57,18 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown));
         <!-- Panel -->
         <div
             v-show="open"
-            class="fixed inset-0 z-40 flex flex-col bg-white sm:inset-auto sm:bottom-24 sm:right-5 sm:h-[600px] sm:max-h-[calc(100vh-8rem)] sm:w-96 sm:rounded-2xl sm:border sm:border-gray-200 sm:shadow-2xl"
+            class="fixed inset-0 z-40 flex flex-col bg-white sm:inset-auto sm:bottom-24 sm:right-5 sm:h-[600px] sm:max-h-[calc(100vh-8rem)] sm:w-96 sm:rounded-2xl sm:border sm:border-stone sm:shadow-2xl"
             role="dialog"
             aria-label="Shopping assistant"
         >
-            <header class="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+            <header class="flex items-center justify-between border-b border-stone px-4 py-3">
                 <div>
-                    <p class="text-sm font-semibold text-gray-900">Shopping assistant</p>
-                    <p class="text-xs text-gray-500">Products, shipping &amp; returns</p>
+                    <p class="text-sm font-semibold text-ink">Shopping assistant</p>
+                    <p class="text-xs text-ink/50">Products, shipping &amp; returns</p>
                 </div>
                 <button
                     type="button"
-                    class="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                    class="rounded-md p-1.5 text-ink/50 hover:bg-stone/30 hover:text-ink/70"
                     aria-label="Close"
                     @click="close"
                 >
@@ -84,7 +84,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown));
                 aria-live="polite"
             >
                 <div v-if="!messages.length" class="space-y-4">
-                    <p class="text-sm text-gray-600">
+                    <p class="text-sm text-ink/70">
                         Hi! Ask me about our travel gear, shipping or returns.
                     </p>
                     <div class="flex flex-col gap-2">
@@ -92,7 +92,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown));
                             v-for="example in EXAMPLES"
                             :key="example"
                             type="button"
-                            class="rounded-lg border border-gray-200 px-3 py-2 text-left text-sm text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                            class="rounded-lg border border-stone px-3 py-2 text-left text-sm text-ink/70 hover:border-stone hover:bg-stone/20"
                             @click="sendMessage(example)"
                         >
                             {{ example }}
@@ -102,7 +102,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown));
 
                 <ChatMessage v-for="message in messages" :key="message.id" :message="message" />
 
-                <div v-if="sending" class="flex items-center gap-1.5 px-1 text-gray-400">
+                <div v-if="sending" class="flex items-center gap-1.5 px-1 text-ink/50">
                     <span class="h-2 w-2 animate-bounce rounded-full bg-current [animation-delay:-0.3s]" />
                     <span class="h-2 w-2 animate-bounce rounded-full bg-current [animation-delay:-0.15s]" />
                     <span class="h-2 w-2 animate-bounce rounded-full bg-current" />
@@ -113,17 +113,17 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown));
                 {{ error }}
             </p>
 
-            <form class="flex items-end gap-2 border-t border-gray-100 p-3" @submit.prevent="submit">
+            <form class="flex items-end gap-2 border-t border-stone p-3" @submit.prevent="submit">
                 <textarea
                     v-model="draft"
                     rows="1"
                     placeholder="Type a message…"
-                    class="max-h-28 flex-1 resize-none rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-gray-400 focus:outline-none"
+                    class="max-h-28 flex-1 resize-none rounded-lg border border-stone px-3 py-2 text-sm focus:border-ink focus:outline-none"
                     @keydown.enter.exact.prevent="submit"
                 />
                 <button
                     type="submit"
-                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gray-900 text-white disabled:opacity-40"
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-compass text-white disabled:opacity-40"
                     :disabled="sending || !draft.trim()"
                     aria-label="Send"
                 >

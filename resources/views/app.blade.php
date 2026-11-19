@@ -8,12 +8,12 @@
         <title inertia>{{ config('app.name', 'Travel Gear Co') }}</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=fraunces:400,500,600,700|work-sans:400,500,600" rel="stylesheet" />
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @inertiaHead
     </head>
-    <body class="font-sans text-gray-900 bg-white">
+    <body class="font-sans text-ink bg-fog">
         @inertia
     </body>
 </html>

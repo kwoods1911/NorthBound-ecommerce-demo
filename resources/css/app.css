@@ -6,6 +6,20 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --color-fog: #F4F3F0;
+    --color-ink: #1B2027;
+    --color-compass: #A6743D;
+    --color-harbor: #2B3A55;
+    --color-stone: #C9C2B4;
+
+    --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+@layer base {
+    body {
+        background-color: var(--color-fog);
+        color: var(--color-ink);
+    }
 }

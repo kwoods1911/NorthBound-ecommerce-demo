@@ -45,12 +45,12 @@ function addToCart() {
     <Head :title="product.name" />
 
     <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        <Link :href="`/${product.category.slug}`" class="text-xs text-gray-500 hover:text-gray-900">
+        <Link :href="`/${product.category.slug}`" class="text-xs text-ink/50 hover:text-ink">
             &larr; {{ product.category.name }}
         </Link>
 
         <div class="mt-6 lg:grid lg:grid-cols-2 lg:gap-12">
-            <div class="aspect-[4/5] overflow-hidden rounded-lg bg-gray-100">
+            <div class="aspect-[4/5] overflow-hidden rounded-lg bg-stone/20">
                 <img
                     v-if="activeImage"
                     :src="activeImage"
@@ -60,13 +60,13 @@ function addToCart() {
             </div>
 
             <div class="mt-8 lg:mt-0">
-                <h1 class="text-3xl font-semibold tracking-tight">{{ product.name }}</h1>
+                <h1 class="font-serif text-3xl font-semibold tracking-tight">{{ product.name }}</h1>
 
                 <p class="mt-3 text-lg">
-                    <span :class="product.compareAtPrice ? 'text-red-600' : 'text-gray-900'">
+                    <span :class="product.compareAtPrice ? 'text-compass' : 'text-ink'">
                         {{ displayPrice.formatted }}
                     </span>
-                    <span v-if="product.compareAtPrice" class="ml-2 text-gray-400 line-through">
+                    <span v-if="product.compareAtPrice" class="ml-2 text-ink/50 line-through">
                         {{ product.compareAtPrice.formatted }}
                     </span>
                 </p>
@@ -74,12 +74,12 @@ function addToCart() {
                 <p v-if="product.lowStock" class="mt-2 text-xs font-medium text-amber-600">
                     Low stock — order soon
                 </p>
-                <p v-else-if="!product.inStock" class="mt-2 text-xs font-medium text-gray-500">
+                <p v-else-if="!product.inStock" class="mt-2 text-xs font-medium text-ink/50">
                     Currently sold out
                 </p>
 
                 <div v-if="hasVariants" class="mt-6">
-                    <p class="text-sm font-medium text-gray-900">Options</p>
+                    <p class="text-sm font-medium text-ink">Options</p>
                     <div class="mt-2 flex flex-wrap gap-2">
                         <button
                             v-for="variant in product.variants"
@@ -87,8 +87,8 @@ function addToCart() {
                             type="button"
                             class="rounded-md border px-3 py-1.5 text-sm"
                             :class="selectedVariant?.id === variant.id
-                                ? 'border-gray-900 bg-gray-900 text-white'
-                                : 'border-gray-300 text-gray-700 hover:border-gray-900'"
+                                ? 'border-compass bg-compass text-white'
+                                : 'border-stone text-ink/70 hover:border-ink'"
                             @click="selectedVariant = variant"
                         >
                             {{ variant.label || variant.color || variant.size }}
@@ -100,7 +100,7 @@ function addToCart() {
                     <QuantityStepper v-model="quantity" :max="20" />
                     <button
                         type="button"
-                        class="flex-1 rounded-md bg-gray-900 py-3 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-40"
+                        class="flex-1 rounded-md bg-compass py-3 text-sm font-medium text-white hover:bg-compass/90 disabled:opacity-40"
                         :disabled="!canAdd || processing.add"
                         @click="addToCart"
                     >
@@ -110,7 +110,7 @@ function addToCart() {
 
                 <p v-if="flashError" class="mt-3 text-sm text-red-600">{{ flashError }}</p>
 
-                <div class="mt-8 border-t border-gray-100 pt-6 text-sm leading-relaxed text-gray-600">
+                <div class="mt-8 border-t border-stone pt-6 text-sm leading-relaxed text-ink/70">
                     {{ product.description }}
                 </div>
             </div>

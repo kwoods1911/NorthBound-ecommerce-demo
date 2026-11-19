@@ -46,6 +46,7 @@ Livewire exists in this project **only** because Filament depends on it. Do not 
 - `orders` carry a status: `pending` → `paid` → `shipped` → `delivered`, plus `cancelled`
 - `chat_conversations` / `chat_messages` — session-scoped chatbot history
 - `users` have an `is_admin` boolean (a full roles/permissions package is out of scope)
+- `hero_images` — admin-managed: `image_path`, `headline`, `subheading`, `cta_label`, `cta_url`, `is_active` (boolean), `sort_order`. Only one row may be `is_active = true` at a time — activating one deactivates the rest, enforced in the model/service, not left to admin discipline.
 
 **Historical accuracy rule:** `order_items` must snapshot `unit_price` **and** `unit_cost` at the time of purchase. Never join back to `products` to calculate past revenue or profit — editing a product price must not retroactively change reported figures.
 
@@ -84,6 +85,20 @@ Photography-led, minimal chrome, quiet UI. Grounded in travel gear as a subject 
 - Generous whitespace over dense grids
 - One deliberate motion moment per page (e.g. hero image reveal), not hover transitions on every element
 
+## Homepage
+
+Sections, in order:
+
+1. **Hero** — single image pulled from the active `hero_images` row (admin-managed, see Admin panel and Data model). No auto-rotating carousel — one confident image, headline, and CTA. If no row is active, fall back to a sensible static default rather than an empty hero.
+2. **Collection entry tiles** — visual links into New Arrivals / Best Sellers / Accessories / Deals
+3. **Featured products grid** — real product cards (photo, name, price) pulled from the catalog, not placeholder content
+4. **Trust strip** — short row: shipping, returns, warranty. Text only, no icon library dependency needed
+5. **Editorial break** — one full-width lifestyle photo with brief brand copy, links to About. Static content, not admin-managed (out of scope, see below)
+6. **Newsletter signup** — UI only, does not need to actually send/store anything for the demo
+7. **Footer** — nav, social placeholders, legal link stubs
+
+Avoid tracked-out all-caps eyebrow labels above headings (e.g. "TRAVEL GEAR CO" above the hero headline) — this is a generic AI-generated-page tell, not a brand element.
+
 ## Frontend conventions
 
 - Persistent layout holds the header, cart badge, and chatbot panel so they survive navigation.
@@ -101,6 +116,7 @@ Filament, mounted at `/admin`, gated to users with `is_admin = true`.
 - Products — full CRUD including variants, image upload, stock, price, cost price
 - Orders — list and detail view, filterable by status, with status transitions. Orders are **not** deletable
 - Users — read-only list
+- Hero Images — full CRUD (image upload, headline, subheading, CTA label/URL, active toggle). The storefront homepage displays whichever row is currently active. Admins can prepare multiple hero images ahead of time and switch which is live without a deploy
 
 **Dashboard widgets:**
 - Total revenue, total profit (revenue − snapshotted cost), total orders, total units in inventory
@@ -134,4 +150,4 @@ Enter Plan Mode for: schema changes, checkout/payment work, authentication, the 
 
 ## Out of scope
 
-Product reviews, customer-facing order tracking, email notifications, password reset, email verification, multi-currency, coupon codes, per-variant inventory, refunds, roles/permissions packages, CSV export, SSR. Do not build these. Ask before adding anything not listed in this file.
+Product reviews, customer-facing order tracking, email notifications, password reset, email verification, multi-currency, coupon codes, per-variant inventory, refunds, roles/permissions packages, CSV export, SSR, auto-rotating hero carousels, admin management of homepage content beyond hero images (editorial section and newsletter copy stay static). Do not build these. Ask before adding anything not listed in this file.

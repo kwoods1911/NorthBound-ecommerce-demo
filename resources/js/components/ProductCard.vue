@@ -21,7 +21,7 @@ function swatch(name) {
 
 <template>
     <Link :href="product.url" prefetch class="group block">
-        <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-stone/20">
             <img
                 v-if="product.image"
                 :src="product.image"
@@ -31,22 +31,22 @@ function swatch(name) {
             />
             <span
                 v-if="product.badges?.length"
-                class="absolute left-3 top-3 rounded-full bg-white/90 px-2 py-0.5 text-xs font-medium text-gray-900"
+                class="absolute left-3 top-3 rounded-full bg-white/90 px-2 py-0.5 text-xs font-medium text-ink"
             >
                 {{ product.badges[0] }}
             </span>
         </div>
 
         <div class="mt-3 space-y-1">
-            <h3 class="text-sm font-medium text-gray-900">{{ product.name }}</h3>
+            <h3 class="font-serif text-sm font-medium text-ink">{{ product.name }}</h3>
 
             <p class="text-sm">
-                <span :class="product.compareAtPrice ? 'text-red-600' : 'text-gray-900'">
+                <span :class="product.compareAtPrice ? 'text-compass' : 'text-ink'">
                     {{ product.price.formatted }}
                 </span>
                 <span
                     v-if="product.compareAtPrice"
-                    class="ml-1.5 text-gray-400 line-through"
+                    class="ml-1.5 text-ink/50 line-through"
                 >
                     {{ product.compareAtPrice.formatted }}
                 </span>
@@ -57,7 +57,7 @@ function swatch(name) {
                     v-for="color in product.colors"
                     :key="color"
                     :title="color"
-                    class="inline-block h-3 w-3 rounded-full border border-gray-300"
+                    class="inline-block h-3 w-3 rounded-full border border-stone"
                     :style="{ backgroundColor: swatch(color) }"
                 />
             </div>

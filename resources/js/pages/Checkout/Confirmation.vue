@@ -32,29 +32,29 @@ onUnmounted(() => timer && clearInterval(timer));
     <Head title="Order confirmed" />
 
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-        <p class="text-sm font-medium uppercase tracking-widest text-gray-400">
+        <p class="text-sm font-medium uppercase tracking-widest text-ink/50">
             Order {{ order.orderNumber }}
         </p>
 
-        <h1 class="mt-2 text-3xl font-semibold tracking-tight">
+        <h1 class="mt-2 font-serif text-3xl font-semibold tracking-tight">
             <template v-if="order.status === 'paid'">Thank you — your order is confirmed.</template>
             <template v-else-if="order.status === 'pending'">Confirming your payment…</template>
             <template v-else>Order {{ order.statusLabel.toLowerCase() }}</template>
         </h1>
 
-        <p v-if="order.status === 'pending'" class="mt-3 text-sm text-gray-500">
+        <p v-if="order.status === 'pending'" class="mt-3 text-sm text-ink/50">
             This usually takes a few seconds. This page will update automatically.
         </p>
-        <p v-else class="mt-3 text-sm text-gray-600">
+        <p v-else class="mt-3 text-sm text-ink/70">
             A confirmation has been sent to {{ order.email }}.
         </p>
 
-        <div class="mt-10 divide-y divide-gray-100 border-y border-gray-100">
+        <div class="mt-10 divide-y divide-stone border-y border-stone">
             <div v-for="item in order.items" :key="item.name" class="flex justify-between py-4 text-sm">
                 <span>
                     {{ item.name }}
-                    <span v-if="item.variantLabel" class="text-gray-500">— {{ item.variantLabel }}</span>
-                    <span class="text-gray-500"> &times; {{ item.quantity }}</span>
+                    <span v-if="item.variantLabel" class="text-ink/50">— {{ item.variantLabel }}</span>
+                    <span class="text-ink/50"> &times; {{ item.quantity }}</span>
                 </span>
                 <span>{{ item.lineTotal.formatted }}</span>
             </div>
@@ -69,15 +69,15 @@ onUnmounted(() => timer && clearInterval(timer));
             />
         </div>
 
-        <div class="mt-10 text-sm text-gray-600">
-            <p class="font-medium text-gray-900">Shipping to</p>
+        <div class="mt-10 text-sm text-ink/70">
+            <p class="font-medium text-ink">Shipping to</p>
             <p class="mt-1">{{ order.shipping.name }}</p>
             <p>{{ order.shipping.line1 }}<span v-if="order.shipping.line2">, {{ order.shipping.line2 }}</span></p>
             <p>{{ order.shipping.city }}<span v-if="order.shipping.state">, {{ order.shipping.state }}</span> {{ order.shipping.postalCode }}</p>
             <p>{{ order.shipping.country }}</p>
         </div>
 
-        <Link href="/new-arrivals" class="mt-10 inline-block text-sm text-gray-900 underline">
+        <Link href="/new-arrivals" class="mt-10 inline-block text-sm text-ink underline">
             Continue shopping
         </Link>
     </div>

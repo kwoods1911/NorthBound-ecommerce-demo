@@ -4,15 +4,19 @@ import { Head, Link, usePage } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import QuantityStepper from '@/components/cart/QuantityStepper.vue';
 import { useCart } from '@/composables/useCart.js';
+import { useWishlist } from '@/composables/useWishlist.js';
 
 defineOptions({ layout: AppLayout });
 
 const props = defineProps({
     product: { type: Object, required: true },
+    isWishlisted: { type: Boolean, default: false },
 });
 
 const page = usePage();
 const { processing, add } = useCart();
+const user = computed(() => page.props.auth?.user ?? null);
+const wishlist = useWishlist();
 
 const hasVariants = computed(() => props.product.variants.length > 0);
 const selectedVariant = ref(hasVariants.value ? null : { id: null });
@@ -38,6 +42,14 @@ function addToCart() {
         variantId: selectedVariant.value?.id ?? null,
         quantity: quantity.value,
     });
+}
+
+function toggleWishlist() {
+    if (props.isWishlisted) {
+        wishlist.remove(props.product.id);
+    } else {
+        wishlist.add(props.product.id);
+    }
 }
 </script>
 
@@ -105,6 +117,21 @@ function addToCart() {
                         @click="addToCart"
                     >
                         {{ processing.add ? 'Adding…' : 'Add to cart' }}
+                    </button>
+                </div>
+
+                <div class="mt-3">
+                    <Link v-if="!user" href="/login" class="text-sm text-harbor hover:text-ink">
+                        Log in to save to your wishlist
+                    </Link>
+                    <button
+                        v-else
+                        type="button"
+                        class="text-sm text-harbor hover:text-ink disabled:opacity-40"
+                        :disabled="wishlist.processing[`item:${product.id}`]"
+                        @click="toggleWishlist"
+                    >
+                        {{ isWishlisted ? '♥ Saved to wishlist' : '♡ Save to wishlist' }}
                     </button>
                 </div>
 

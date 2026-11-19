@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\OrderStatus;
 use App\Models\Category;
+use App\Models\HeroImage;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -75,6 +76,35 @@ class AdminDemoSeeder extends Seeder
         foreach ([2, 9, 21] as $daysAgo) {
             $this->makeOrder($products, collect([$knownCustomer]), Carbon::today()->subDays($daysAgo));
         }
+
+        $this->seedHeroImages();
+    }
+
+    /**
+     * One live hero plus a prepared-but-inactive alternate, so a demo can show
+     * switching the homepage hero from /admin without a deploy.
+     */
+    private function seedHeroImages(): void
+    {
+        HeroImage::create([
+            'image_path' => 'products/01M1P0CD9GCVE4DCF32VHQ5WMX.png',
+            'headline' => 'Gear made for the way you travel.',
+            'subheading' => 'Considered luggage, carry-ons and accessories — built to move.',
+            'cta_label' => 'Shop new arrivals',
+            'cta_url' => '/new-arrivals',
+            'is_active' => true,
+            'sort_order' => 0,
+        ]);
+
+        HeroImage::create([
+            'image_path' => null,
+            'headline' => 'The trip starts before you pack.',
+            'subheading' => 'Best-selling bags, ready when you are.',
+            'cta_label' => 'Shop best sellers',
+            'cta_url' => '/best-sellers',
+            'is_active' => false,
+            'sort_order' => 1,
+        ]);
     }
 
     /**

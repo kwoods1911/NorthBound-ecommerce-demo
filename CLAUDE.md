@@ -46,6 +46,7 @@ Livewire exists in this project **only** because Filament depends on it. Do not 
 - `orders` carry a status: `pending` → `paid` → `shipped` → `delivered`, plus `cancelled`
 - `chat_conversations` / `chat_messages` — session-scoped chatbot history
 - `users` have an `is_admin` boolean (a full roles/permissions package is out of scope)
+- `hero_images` — admin-managed: `image_path`, `headline`, `subheading`, `cta_label`, `cta_url`, `is_active` (boolean), `sort_order`. Only one row may be `is_active = true` at a time — activating one deactivates the rest, enforced in the model/service, not left to admin discipline.
 
 **Historical accuracy rule:** `order_items` must snapshot `unit_price` **and** `unit_cost` at the time of purchase. Never join back to `products` to calculate past revenue or profit — editing a product price must not retroactively change reported figures.
 
@@ -101,6 +102,7 @@ Filament, mounted at `/admin`, gated to users with `is_admin = true`.
 - Products — full CRUD including variants, image upload, stock, price, cost price
 - Orders — list and detail view, filterable by status, with status transitions. Orders are **not** deletable
 - Users — read-only list
+- Hero Images — full CRUD (image upload, headline, subheading, CTA label/URL, active toggle). The storefront homepage displays whichever row is currently active. Admins can prepare multiple hero images ahead of time and switch which is live without a deploy
 
 **Dashboard widgets:**
 - Total revenue, total profit (revenue − snapshotted cost), total orders, total units in inventory

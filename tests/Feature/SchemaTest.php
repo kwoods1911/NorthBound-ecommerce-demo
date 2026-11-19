@@ -20,6 +20,7 @@ it('has all domain tables', function () {
         'carts', 'cart_items', 'wishlists',
         'orders', 'order_items',
         'chat_conversations', 'chat_messages',
+        'hero_images',
     ] as $table) {
         expect(Schema::hasTable($table))->toBeTrue("missing table [$table]");
     }

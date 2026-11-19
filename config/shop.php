@@ -10,6 +10,9 @@ return [
 
     'per_page' => 12,
 
+    // How many products the homepage "Featured" grid shows (best sellers).
+    'featured_count' => 8,
+
     'new_arrival_days' => 30,
 
     'low_stock_threshold' => 5,
@@ -53,6 +56,7 @@ return [
         'store_name' => 'Travel Gear Co',
         'shipping' => 'Orders ship within 1–2 business days. Shipping is a flat $15, and free on orders over $150. Delivery usually takes 3–7 business days within the US.',
         'returns' => 'Returns are accepted within 30 days of delivery for unused items in their original packaging. Return shipping is free, and refunds go back to the original payment method within 5 business days of us receiving the item.',
+        'warranty' => 'Every bag is covered by a limited lifetime warranty against defects in materials and workmanship. If something breaks under normal use, we repair or replace it.',
     ],
 
 ];

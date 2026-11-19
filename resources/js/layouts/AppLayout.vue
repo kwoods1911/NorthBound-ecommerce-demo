@@ -102,9 +102,48 @@ const collections = [
             <slot />
         </main>
 
-        <footer class="border-t border-stone py-8">
-            <div class="mx-auto max-w-7xl px-4 text-sm text-ink/50 sm:px-6 lg:px-8">
-                Demo store — travel gear &amp; luggage.
+        <footer class="border-t border-stone py-12">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 gap-8 sm:grid-cols-4">
+                    <div>
+                        <h3 class="font-serif text-sm text-ink">Shop</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-ink/60">
+                            <li v-for="item in collections" :key="item.href">
+                                <Link :href="item.href" prefetch class="hover:text-ink">
+                                    {{ item.label }}
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-sm text-ink">Company</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-ink/60">
+                            <li>
+                                <Link href="/about" class="hover:text-ink">About</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-sm text-ink">Social</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-ink/60">
+                            <li v-for="name in ['Instagram', 'Pinterest', 'TikTok']" :key="name">
+                                <a href="#" class="hover:text-ink">{{ name }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-sm text-ink">Legal</h3>
+                        <ul class="mt-3 space-y-2 text-sm text-ink/60">
+                            <li v-for="name in ['Privacy', 'Terms', 'Shipping & Returns']" :key="name">
+                                <a href="#" class="hover:text-ink">{{ name }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="mt-10 text-sm text-ink/50">
+                    Demo store — travel gear &amp; luggage.
+                </p>
             </div>
         </footer>
 

@@ -85,6 +85,20 @@ Photography-led, minimal chrome, quiet UI. Grounded in travel gear as a subject 
 - Generous whitespace over dense grids
 - One deliberate motion moment per page (e.g. hero image reveal), not hover transitions on every element
 
+## Homepage
+
+Sections, in order:
+
+1. **Hero** — single image pulled from the active `hero_images` row (admin-managed, see Admin panel and Data model). No auto-rotating carousel — one confident image, headline, and CTA. If no row is active, fall back to a sensible static default rather than an empty hero.
+2. **Collection entry tiles** — visual links into New Arrivals / Best Sellers / Accessories / Deals
+3. **Featured products grid** — real product cards (photo, name, price) pulled from the catalog, not placeholder content
+4. **Trust strip** — short row: shipping, returns, warranty. Text only, no icon library dependency needed
+5. **Editorial break** — one full-width lifestyle photo with brief brand copy, links to About. Static content, not admin-managed (out of scope, see below)
+6. **Newsletter signup** — UI only, does not need to actually send/store anything for the demo
+7. **Footer** — nav, social placeholders, legal link stubs
+
+Avoid tracked-out all-caps eyebrow labels above headings (e.g. "TRAVEL GEAR CO" above the hero headline) — this is a generic AI-generated-page tell, not a brand element.
+
 ## Frontend conventions
 
 - Persistent layout holds the header, cart badge, and chatbot panel so they survive navigation.
@@ -136,4 +150,4 @@ Enter Plan Mode for: schema changes, checkout/payment work, authentication, the 
 
 ## Out of scope
 
-Product reviews, customer-facing order tracking, email notifications, password reset, email verification, multi-currency, coupon codes, per-variant inventory, refunds, roles/permissions packages, CSV export, SSR. Do not build these. Ask before adding anything not listed in this file.
+Product reviews, customer-facing order tracking, email notifications, password reset, email verification, multi-currency, coupon codes, per-variant inventory, refunds, roles/permissions packages, CSV export, SSR, auto-rotating hero carousels, admin management of homepage content beyond hero images (editorial section and newsletter copy stay static). Do not build these. Ask before adding anything not listed in this file.

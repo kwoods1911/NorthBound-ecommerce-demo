@@ -8,6 +8,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -37,8 +38,11 @@ Route::post('/chat', [ChatController::class, 'store'])
 
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
-Route::get('/account', [AccountController::class, 'show'])
-    ->middleware('auth')
-    ->name('account');
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [AccountController::class, 'show'])->name('account');
+    Route::get('/account/wishlist', [WishlistController::class, 'index'])->name('account.wishlist');
+    Route::post('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{product:id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+});
 
 require __DIR__.'/auth.php';
